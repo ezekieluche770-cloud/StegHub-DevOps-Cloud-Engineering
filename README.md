@@ -31,11 +31,11 @@ The result is a fully functional web server environment on AWS, ready to host dy
 
 For a complete walkthrough with commands and screenshots, see the [full documentation](LEMP-Stack/Docs.md).
 
-## MERN Stack Implementation
+## 
 
 This project implements a MERN stack (MongoDB, Express.js, React, Node.js) on an AWS EC2 instance. It covers provisioning a Ubuntu 26.04 LTS server on t3.micro, configuring security groups for SSH and HTTP access, and building a full-stack To-Do application.
 
-Key steps include:
+KMERN Stack Implementationey steps include:
 - **Backend Setup** — installing Node.js and npm, initializing the project, and installing Express.js along with dotenv
 - **MongoDB** — creating a cloud database via MongoDB Atlas, configuring database access, and connecting the application using Mongoose
 - **RESTful API** — defining routes and models for creating, reading, and deleting To-Do items using Express routers and HTTP methods (GET, POST, DELETE)
