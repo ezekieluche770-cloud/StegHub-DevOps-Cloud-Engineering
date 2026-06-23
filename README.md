@@ -31,11 +31,26 @@ The result is a fully functional web server environment on AWS, ready to host dy
 
 For a complete walkthrough with commands and screenshots, see the [full documentation](LEMP-Stack/Docs.md).
 
-## 
+## MEAN Stack Implementation
+
+This project implements a MEAN stack (MongoDB, Express.js, Angular, Node.js) on an AWS EC2 instance. It covers provisioning a Ubuntu 26.04 LTS server on t3.micro, configuring security groups for SSH and HTTP access, and building a full-stack Book Register application.
+
+Key steps include:
+- **Node.js** — installing Node.js and npm to set up the Express routes and AngularJS controllers
+- **MongoDB** — installing and configuring the database, adding the repository, and starting the MongoDB service
+- **Express.js & Mongoose** — installing Express and Mongoose, defining routes for CRUD operations, and creating a Book schema with fields for name, ISBN, author, and pages
+- **AngularJS** — connecting the frontend to the backend with AngularJS controllers that handle GET, POST, PUT, and DELETE requests
+- **Integration Testing** — launching the server, verifying endpoints with curl, and accessing the Book Register application via the browser
+
+The result is a fully functional Book Register application deployed on AWS, demonstrating a complete JavaScript-based full-stack development workflow from database to user interface.
+
+For a complete walkthrough with commands and screenshots, see the [full documentation](MEAN-Stack/Docs.md).
+
+## MERN Stack Implementation
 
 This project implements a MERN stack (MongoDB, Express.js, React, Node.js) on an AWS EC2 instance. It covers provisioning a Ubuntu 26.04 LTS server on t3.micro, configuring security groups for SSH and HTTP access, and building a full-stack To-Do application.
 
-KMERN Stack Implementationey steps include:
+Key steps include:
 - **Backend Setup** — installing Node.js and npm, initializing the project, and installing Express.js along with dotenv
 - **MongoDB** — creating a cloud database via MongoDB Atlas, configuring database access, and connecting the application using Mongoose
 - **RESTful API** — defining routes and models for creating, reading, and deleting To-Do items using Express routers and HTTP methods (GET, POST, DELETE)
