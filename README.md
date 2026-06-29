@@ -1,5 +1,19 @@
 # StegHub-DevOps-Cloud-Engineering
 
+## Client-Server Architecture with MySQL
+
+This project implements a client-server architecture using MySQL on two AWS EC2 instances. It covers provisioning two Ubuntu 26.04 LTS servers (`mysql-server` and `mysql-client`) on t3.micro, configuring security groups for SSH access, and setting up the MySQL DBMS to communicate over a private network.
+
+Key steps include:
+- **MySQL Server** — installing and configuring MySQL Server, enabling the service, and binding it to the private IP for remote connections
+- **MySQL Client** — installing MySQL Client on a separate instance and connecting to the remote MySQL Server over the network
+- **Security Configuration** — configuring the MySQL user for remote access and updating the bind-address and firewall rules
+- **Connectivity Testing** — verifying the client-server connection by executing SQL queries from the client instance
+
+The result is a functional client-server database architecture on AWS, demonstrating how a MySQL client can connect to a remote MySQL server and execute queries over the network.
+
+For a complete walkthrough with commands and screenshots, see the [full documentation](Client-Server-Architecture%20with%20Mysql/Docs.md).
+
 ## LAMP Stack Implementation
 
 This project implements a LAMP stack (Linux, Apache, MySQL, PHP) on an AWS EC2 instance. It covers provisioning a Ubuntu 26.04 LTS server on t3.micro, configuring security groups for SSH and HTTP access, and installing each component of the stack.
