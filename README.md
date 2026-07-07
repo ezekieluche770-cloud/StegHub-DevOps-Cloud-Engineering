@@ -75,3 +75,19 @@ Key steps include:
 The result is a fully functional MERN To-Do application deployed on AWS, demonstrating a complete JavaScript-based full-stack development workflow from database to user interface.
 
 For a complete walkthrough with commands and screenshots, see the [full documentation](MERN-Stack/Docs.md).
+
+## Web Solution with WordPress
+
+This project implements a two-tier WordPress deployment on two AWS EC2 instances (RedHat), separating the web layer from the database layer for independent scaling, patching, and security. It covers provisioning instances, configuring LVM storage across multiple EBS volumes, and installing each component of the stack.
+
+Key steps include:
+- **LVM Configuration** — creating logical volumes for application files (`apps-lv`) and system logs (`logs-lv`) on the Web Server, and a dedicated database volume (`db-lv`) on the DB Server using LVM across EBS volumes
+- **Web Stack** — installing Apache and PHP 8.2 with necessary modules and PHP-FPM on the Web Server
+- **Database** — installing MySQL on a separate DB Server with the database stored on LVM-backed storage
+- **WordPress** — downloading and deploying WordPress to the web server's document root
+- **Security** — configuring SELinux policies for Apache, binding MySQL to the private IP, and locking the DB Server's security group to the Web Server's private IP only
+- **Connectivity** — connecting WordPress to the remote MySQL database over the private network
+
+The result is a secure, two-tier CMS platform on AWS where the web and database layers can be managed independently and the database is never exposed to the public internet.
+
+For a complete walkthrough with commands and screenshots, see the [full documentation](Web-Solution-with-Wordpress/Docs.md).
