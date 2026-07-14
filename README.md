@@ -91,3 +91,18 @@ Key steps include:
 The result is a secure, two-tier CMS platform on AWS where the web and database layers can be managed independently and the database is never exposed to the public internet.
 
 For a complete walkthrough with commands and screenshots, see the [full documentation](Web-Solution-with-Wordpress/Docs.md).
+
+## DevOps Tooling Website Solution
+
+This project implements a scalable, stateless web application architecture on AWS using a shared NFS storage layer and a dedicated MySQL database server. It covers provisioning multiple RedHat Enterprise Linux 8 and Ubuntu EC2 instances, configuring LVM across EBS volumes, and deploying a PHP-based tooling application across three web servers that share code and logs via NFS.
+
+Key steps include:
+- **NFS Server** — configuring LVM across three 10 GB EBS volumes, creating logical volumes for apps, logs, and opt, then exporting them via NFS to the web servers
+- **Database Server** — installing MySQL on Ubuntu, creating the `tooling` database and `webaccess` user, and binding MySQL to the private subnet
+- **Web Servers** — launching three RHEL 8 instances, mounting `/var/www` to the NFS export and `/var/log/httpd` to the logs export, and installing Apache, PHP 8.2, and PHP-FPM
+- **Shared Storage** — mounting the same NFS exports on all three web servers so they serve identical content, making the web tier stateless and replaceable
+- **Application Deployment** — cloning the tooling repository from GitHub, configuring `functions.php` to connect to the remote MySQL database, and creating an admin user
+
+The result is a stateless, multi-tier web architecture on AWS where any web server can be terminated and replaced without data loss, the database is isolated on a private subnet, and all application files are served from a central NFS share.
+
+For a complete walkthrough with commands and screenshots, see the [full documentation](DevOps%20Tooling%20Website%20Solution/Docs.md).
