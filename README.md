@@ -106,3 +106,18 @@ Key steps include:
 The result is a stateless, multi-tier web architecture on AWS where any web server can be terminated and replaced without data loss, the database is isolated on a private subnet, and all application files are served from a central NFS share.
 
 For a complete walkthrough with commands and screenshots, see the [full documentation](DevOps%20Tooling%20Website%20Solution/Docs.md).
+
+## Load Balancer Solution With Apache
+
+This project implements an Apache HTTP Server as a load balancer on an Ubuntu EC2 instance to distribute HTTP traffic between two RHEL9 web servers hosting the Tooling website. It covers provisioning a separate Ubuntu 26.04 LTS load balancer instance, configuring Apache's mod_proxy_balancer module, and verifying that requests are evenly distributed across backend servers.
+
+Key steps include:
+- **Apache Installation** — installing Apache2 and enabling proxy, proxy_balancer, proxy_http, headers, and lbmethod_bytraffic modules
+- **Load Balancer Configuration** — defining a backend server pool with BalancerMember directives and selecting the bytraffic balancing method
+- **Traffic Verification** — monitoring access logs on both web servers to confirm even request distribution
+- **NFS Unmounting** — detaching shared log mounts to ensure each web server maintains independent logs
+- **Local DNS Resolution** — configuring /etc/hosts for simplified backend server management using arbitrary hostnames
+
+The result is a highly available web architecture on AWS where Apache acts as a reverse proxy and load balancer, distributing incoming client requests across multiple backend web servers to improve performance, fault tolerance, and scalability.
+
+For a complete walkthrough with commands and screenshots, see the [full documentation](Load%20Balancer%20Solution%20With%20Apache/Docs.md).
