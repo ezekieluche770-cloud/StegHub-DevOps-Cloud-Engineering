@@ -288,3 +288,82 @@ cat /mnt/apps/README.md
 ![cat README](img/image37.png)
 
 If you see the changes you had previously made in your GitHub - the job works as expected.
+
+
+## Troubleshooting: Jenkins Built-In Node Offline Due to Disk Space Threshold
+
+During this project, I encountered an issue where the Jenkins **Built-In Node** remained **Offline**, preventing new builds from running.
+
+### Symptoms
+
+The **Build History** showed:
+
+```text
+#n Pending
+Waiting for next available executor
+```
+
+The **Built-In Node** page displayed the following warning:
+
+```text
+Disk space is below threshold of 1.00 GiB
+```
+
+As a result, Jenkins marked the controller node as **Offline**, causing webhook-triggered builds to remain queued indefinitely.
+
+---
+
+## Root Cause
+
+By default, Jenkins monitors the available disk and temporary storage space on the controller node.
+
+Although the EC2 instance still had sufficient disk space for this lab, the available **temporary storage (`/tmp`)** had fallen below Jenkins' default threshold of **1 GiB**, causing Jenkins to automatically place the Built-In Node offline as a safety measure.
+
+---
+
+## Solution
+
+Navigate to:
+
+```text
+Manage Jenkins
+    └── Nodes
+          └── Built-In Node
+                └── Configure
+```
+
+Scroll to the **Node Properties** section and enable:
+
+- **Disk Space Monitoring Thresholds**
+
+Update the values as follows:
+
+| Setting | Value |
+|---------|-------|
+| Free Disk Space Threshold | `500MiB` |
+| Free Disk Space Warning Threshold | `700MiB` |
+| Free Temp Space Threshold | `500MiB` |
+| Free Temp Space Warning Threshold | `700MiB` |
+
+> **Note:** Use **MiB** (Mebibytes), **not MB**.
+
+After updating the values:
+
+1. Click **Save**.
+2. Return to **Built-In Node**.
+3. Click **Bring this node back online**.
+4. Refresh the page.
+
+The node should come back online, allowing queued builds to execute successfully.
+
+---
+
+## Why This Worked
+
+Lowering the disk space monitoring thresholds prevented Jenkins from marking the Built-In Node as offline due to limited temporary storage. Once the node was brought back online, queued webhook-triggered builds resumed execution without requiring additional storage.
+
+---
+
+> **Important**
+>
+> This workaround is suitable for learning environments and small lab deployments where storage is limited. In production environments, the recommended approach is to increase available disk space or clean up unnecessary files instead of lowering Jenkins' monitoring thresholds.
