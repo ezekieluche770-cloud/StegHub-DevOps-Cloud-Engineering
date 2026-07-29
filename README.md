@@ -122,6 +122,21 @@ The result is a highly available web architecture on AWS where Apache acts as a 
 
 For a complete walkthrough with commands and screenshots, see the [full documentation](Load%20Balancer%20Solution%20With%20Apache/Docs.md).
 
+## Load Balancer Solution With Nginx and SSL
+
+This project implements an Nginx load balancer on an Ubuntu EC2 instance to distribute HTTP traffic across multiple backend web servers, and secures the application with an SSL/TLS certificate from Let's Encrypt. It covers provisioning an Nginx load balancer instance, configuring reverse proxy and upstream server blocks, registering a domain name, and enabling encrypted HTTPS communication via Certbot.
+
+Key steps include:
+- **Nginx Installation** — installing Nginx on Ubuntu and configuring it as a reverse proxy and load balancer
+- **Load Balancer Configuration** — defining an upstream server pool with weighted distribution and proxying requests to the backend web servers
+- **Domain Registration** — registering a domain name and associating it with an Elastic IP for a static public endpoint
+- **SSL/TLS with Certbot** — installing Certbot via snap, requesting a Let's Encrypt certificate, and configuring automatic HTTPS redirects
+- **Certificate Renewal** — setting up a cron job for automatic renewal of the 90-day Let's Encrypt certificate
+
+The result is a highly available and secure web architecture on AWS where Nginx acts as an encrypted reverse proxy, distributing incoming HTTPS traffic across multiple backend servers while protecting data in transit.
+
+For a complete walkthrough with commands and screenshots, see the [full documentation](Load%20Balancer%20Solution%20With%20Nginx%20and%20SSL/Docs.md).
+
 ## Tooling Website Deployment Automation with Jenkins CI
 
 This project implements a Continuous Integration (CI) pipeline using Jenkins to automate the deployment of the Tooling Website on AWS. It covers provisioning a dedicated Jenkins server on Ubuntu 26.04 LTS, connecting it to a GitHub repository via webhooks, and automatically deploying application updates to a shared NFS server that serves multiple web servers.
